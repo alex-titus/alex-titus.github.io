@@ -1,5 +1,57 @@
+
+<script>
+
+    function setup(){
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCTmBlXzFaF52dgqJGNqku3J1-070abnkg",
+            authDomain: "phibeams1.firebaseapp.com",
+            databaseURL: "https://phibeams1.firebaseio.com",
+            projectId: "phibeams1",
+            storageBucket: "phibeams1.appspot.com",
+            messagingSenderId: "1075509088859"
+        };
+
+        //run config
+        firebase.initializeApp(config);
+        
+        var database = firebase.database();
+
+        //create database paths here
+        var songs = database.ref('songs');
+        
+        //create data objects here
+        var data = {
+            name: "A Song",
+            artist: "An artist",
+            album: "Song album",
+            danceability: 0.753,
+            energy: 0.578,
+            key: 5,
+            loudness: -11.840,
+            tempo: 98.002
+        };
+
+        //push data to database
+        songs.push(data, finished);
+        function finished(error){
+            if(error) {
+                console.log("Error pushing data to DB");
+            } else {
+                console.log("Data successfully saved");
+            }
+        }
+    }
+    
+</script>
+
+
 <html>
 	<head>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+    <script>
+        window.onload = setup;
+    </script>
 	Hello World!
 	</head>
 </html>
