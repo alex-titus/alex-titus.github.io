@@ -1,0 +1,46 @@
+AI Updates (when and how it updates)
+  -User input
+    -User can flag a song if it does not fit/they do not like a particular song
+    -User may 'dislike' or 'like' and entire playlists
+
+
+Playlist Generation
+  -How to determine which songs?
+    -Artist
+    -Related artists
+    -current_user_* (recently_played, saved_albums, saved_tracks, ...)
+    -Genre
+    -Danceability
+    -Popularity?
+    -key
+    -mode
+    -time signatures
+    -energy (!!!)
+    -instrumentalness
+    -liveness
+    -loudness
+    -speechiness
+    -valency?
+    -tempo
+
+  -How to create playlists
+    -API calls
+    -preset number of songs (50?, 60?, radio-style endless generation?)
+
+
+Database Interaction
+  -What (what does the AI need from the database):
+    *Songs
+    *Artists?
+    *Albums?
+    *Danceability?
+  -How?
+  -When?
+
+
+What other information does the AI need?
+What other interactions will happen with AI and other sources?
+
+DB stores ai values:
+	-global weights (adjusted mostly through playlist votes)
+	-user weights	(adjustsed mostly through indv. song votes)

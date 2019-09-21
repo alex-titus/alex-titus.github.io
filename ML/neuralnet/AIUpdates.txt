@@ -1,0 +1,9 @@
+FROM OUTLINE:
+AI Updates (when and how it updates)
+  -User input
+    -User can flag a song if it does not fit/they do not like a particular song
+    -User may 'dislike' or 'like' and entire playlists
+
+IN DETAIL:
+User Input
+  'like'/'dislike' from website

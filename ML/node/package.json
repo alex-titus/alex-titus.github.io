@@ -1,0 +1,25 @@
+{
+  "name": "project_phi",
+  "version": "1.0.0",
+  "description": "cosc426 project",
+  "main": "test-node.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-spotify-api": "^1.1.1",
+    "python-shell": "^1.0.8",
+    "spotify-web-api-node": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sean brittingham",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash"
+  }
+}

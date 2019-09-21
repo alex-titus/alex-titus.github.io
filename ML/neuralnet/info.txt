@@ -1,0 +1,6 @@
+Spotify API Information:
+  Client ID: 67c9bdb789854efc9b20b4c4c06ca0cb
+  Client Secret: 22132f38bf3e47b794903f9302b5be8e
+  Redirect URIs:
+    http://localhost:8888/
+    http://localhost:8888/callback
