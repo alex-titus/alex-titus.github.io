@@ -5,8 +5,12 @@ AI portion of Project PHI
 Sean Brittingham
 ****************************************************
 IMPORTANT:
+    -as of this update i have been able to successfully run server.js on both Windows and Linux Mint. 
+        Having some trouble installing Anaconda on Mint...
 
-    -../node is missing a directory named node_modules. this comes from Node.js and contains Express. you will have to move the files of ../node into the directory with node_modules in order for this to build. node_modules is too large to upload to GitHub. working on a solution
+    -../node is missing a directory named node_modules. this comes from Node.js and contains Express. you will have to move the files of
+        ../node into the directory with node_modules in order for this to build. node_modules is too large to upload to GitHub. working 
+        on a solution
     
     - removed 'secret' from spotify-tools.js. You will have to get this from the Discord and add it to the file.
 
