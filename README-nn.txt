@@ -1,6 +1,12 @@
 AI portion of Project PHI
 Sean Brittingham
+****************************************************
+IMPORTANT:
+    -../node is missing a directory named node_modules. this comes from Node.js and contains Express. you will have to move the files of ../node into the directory with node_modules in order for this to build. node_modules is too large to upload to GitHub. working on a solution
+    
+    -removed 'secret' from spotify-tools.js. You will have to get this from the Discord and add it to the file.
 
+****************************************************
 Using:
 JavaScript to call Python scripts
     -Node.js: "Node.js is an open-source, cross-platform Javascript run-time
@@ -21,3 +27,5 @@ Python 2.7 (specifically Python 2.7.15rc1) to manage the neural net which
     determines what songs to add:
     -Anaconda:
     (might use TensorFlow... unsure)
+    
+    
