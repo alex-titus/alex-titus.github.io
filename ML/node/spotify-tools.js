@@ -7,7 +7,7 @@ class SpotifyTools {
 
         this.spotify = new this.Spotify({
             id:           '67c9bdb789854efc9b20b4c4c06ca0cb',
-            secret:       '22132f38bf3e47b794903f9302b5be8e',
+            secret:       '',
             redirectUri:  'http://localhost:8888/'
         });
 
