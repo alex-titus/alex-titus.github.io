@@ -1,8 +1,7 @@
 # alex-titus.github.io
 
 
-AI portion of Project PHI 
-Sean Brittingham
+AI portion of Project PHI
 ****************************************************
 IMPORTANT:
     
