@@ -1,3 +1,5 @@
+'''dont need???
+
 class Playlist():
     def __init__(self, m = 40):
         self.playlist = []      #
@@ -39,3 +41,4 @@ p = Playlist()
 p.genFullPlaylist()
 # genFullPlaylist()
 #end test code
+'''
