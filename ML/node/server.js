@@ -1,4 +1,5 @@
-/*
+/* server.js
+
 sample Spotify API calls and setup using npmjs' node-spotify-api
   found at: https://www.npmjs.com/package/node-spotify-api
 
@@ -17,43 +18,23 @@ setup:
     -simple website to test js code
 */
 
-
 /* communicates with python script, ../neuralnet/test.py
-writes to webpage... do not want
+
+    writes to webpage... do not want
 */
-const express = require('express');  //includes express framework
-const app = express()                //framework named 'app'
 
-
+// imports spotify-tools.js to access spotify api
 const SpotifyTools = require('./spotify-tools');
 const s = new SpotifyTools();
-s.song_call('All the Small Things');
 
+// imports nn-tools.js to access python neural network
+const NNRequest = require('./nn-tools')
+const new_playlist = new NNRequest();
 
-console.log('0');
-//define function which calls py script
-let runPy = new Promise(function(success, nosuccess) {
-    const { spawn } = require('child_process');
-    const pyprog = spawn('python', ['../neuralnet/main.py']);
+var playlist = new_playlist.request('test from js');
+// console.log(playlist);
+new_playlist.report();
 
-    pyprog.stdout.on('data', function(data) {
-        console.log('1');
-        success(data);
-    });
-
-    pyprog.stderr.on('data', (data) => {
-        console.log('2');
-        nosuccess(data);
-    });
-});
-
-app.get('/', (req, res) => {
-    runPy.then(function(fromRunpy) {
-        //value from py script, cast to be a number
-        var x = Number(fromRunpy);
-        res.end(fromRunpy);
-    });
-})
 
 
 //'new playlist'
@@ -66,4 +47,5 @@ app.get('/', (req, res) => {
 //'new'
 
 
-app.listen(4000, () => console.log('Application listening on port 4000!'))
+// sample song call
+// s.song_call('All the Small Things');

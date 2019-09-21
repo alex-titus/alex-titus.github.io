@@ -6,9 +6,9 @@ class SpotifyTools {
         this.Spotify = require('node-spotify-api');
 
         this.spotify = new this.Spotify({
-            id:           '67c9bdb789854efc9b20b4c4c06ca0cb',
-            secret:       '',
-            redirectUri:  'http://localhost:8888/'
+          id:           '67c9bdb789854efc9b20b4c4c06ca0cb',
+          secret:       '',
+          redirectUri:  'http://localhost:8888/'
         });
 
         // return spotify;
@@ -21,7 +21,8 @@ class SpotifyTools {
             if(err){
                 console.log('Error occured:' + err);
             }
-            console.log(data);
+
+            // console.log(data);
         });
 
     }
