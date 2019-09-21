@@ -16,6 +16,10 @@ IMPORTANT:
     - removed 'secret' from spotify-tools.js. You will have to get this from the Discord and add it to the file.
 
 ****************************************************
+UPDATES:    
+    -removed server, no longer writes to localhost
+
+****************************************************
 Using:
 JavaScript to call Python scripts
 
