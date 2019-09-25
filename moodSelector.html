@@ -1,0 +1,137 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:vml="urn:schemas-microsoft-com:vml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Mood Selector</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <!--[if vml]><style>vml\:* {behavior: url(#default#VML);}</style><![endif]-->
+    <script type="text/javascript" src="./jsgl.min.js"></script>
+  </head>
+  <body>
+    <div id="panel" style="width: 440px; height: 440px; position: absolute"></div>
+    <script type="text/javascript">
+	// Determine if mouse is within a certain radius of another point
+	function isInCircle(mx, my, px, py, radius){
+		var dis = Math.sqrt(Math.pow(mx - px, 2) + Math.pow(my - py, 2)); 
+		if(dis <= radius){
+			return "true";
+		} else {
+			return "false";
+		}
+	}
+
+	//returns the distance between two points
+	function getDistance(mx, my, px, py){	
+		var dis = Math.sqrt(Math.pow(mx - px, 2) + Math.pow(my - py, 2)); 
+		return dis;
+	}
+
+
+        myPanel = new jsgl.Panel(document.getElementById("panel"));
+
+
+ 
+	var polygon = myPanel.createPolygon();
+	myPanel.addElement(polygon);
+
+	polygon.getFill().setColor('#F80');
+	
+	var points = 5;
+
+	var lines = [];
+	var text = [];
+
+	var twoPi = Math.PI * 2;
+	var center = [215, 220];
+	var radii = [100, 100, 100, 100, 100];
+	var maxRadius = 200;
+	var i;
+	for(i = 0; i < points; i++){
+		var x = Math.sin((twoPi)*(i/points))*radii[i] + center[0];	
+		var y = Math.cos((twoPi)*(i/points))*radii[i] + center[1];
+
+		lines[i] = myPanel.createLine();
+		lines[i].setStartPointXY(center[0], center[1]);
+		lines[i].setEndPointXY(x, y);
+	
+		myPanel.addElement(lines[i]);
+		polygon.addPointXY(x, y);	  
+	
+		x = Math.sin((twoPi)*(i/points))*maxRadius + center[0];
+		y = Math.cos((twoPi)*(i/points))*maxRadius + center[1];
+		text[i] = myPanel.createLabel();
+		text[i].setLocationXY(x, y);
+		text[i].setHorizontalAnchor(jsgl.HorizontalAnchor.CENTER);
+		text[i].setVerticalAnchor(jsgl.VerticalAnchor.CENTER);
+
+		myPanel.addElement(text[i]);
+	}
+
+
+	text[0].setText("Tempo");
+	text[1].setText("Happiness");
+	text[2].setText("Danceability");
+	text[3].setText("Loudness");
+	text[4].setText("Energy");
+
+	var clicked = "false";
+	var selected = -1;
+	function clickHandler(eventArgs){
+	    	clicked = "true";
+	}
+
+	function releaseHandler(eventArgs){
+		clicked = "false";
+		selected = -1;
+	}
+
+	myPanel.addMouseDownListener(clickHandler);
+	myPanel.addMouseUpListener(releaseHandler);
+	myPanel.addMouseMoveListener(movePoint);
+	function movePoint(eventArgs){
+	    
+	    if(clicked === "true"){	
+			for(var i = 0; i < polygon.getPointsCount(); i++){
+				if(selected !== -1)
+					i = selected;
+				mouseXY = eventArgs.getLocation();
+				pointXY = polygon.getPointAt(i);
+	    			if(isInCircle(mouseXY.getX(), mouseXY.getY(), pointXY.getX(), pointXY.getY(), 30) == "true" || selected === i){
+					selected = i;
+					var dist = getDistance(mouseXY.getX(), mouseXY.getY(), center[0], center[1]);
+					if(dist <= maxRadius){
+						var x = Math.sin((twoPi)*(i/5))*dist + center[0];
+						var y = Math.cos((twoPi)*(i/5))*dist + center[1];
+						radii[i] = dist;
+						polygon.setPointXYAt(x, y, i);
+						lines[i].setEndPointXY(x, y);
+					}
+	    				i = polygon.getPointsCount();
+	    			}
+			 }
+	    }
+	}
+
+	function submit(){
+		console.log("Submit:\nTempo " + radii[0]/maxRadius);
+		console.log("Valence: " + radii[1]/maxRadius);
+		console.log("Danceability: " + radii[2]/maxRadius);
+		console.log("Loudness: " + radii[3]/maxRadius);
+		console.log("Energy: " + radii[4]/maxRadius);
+	}
+
+	function downvote(){
+		console.log("User does not like the playlist.");
+	}
+
+	function upvote(){
+		console.log("User does like the playlist.");
+	}
+   </script>
+   <button type="button" style="position: relative" onclick="submit();">Submit</button>
+   <button type="button" style="position: relative" onclick="downvote();">This Playlist Sucks</button>
+   <button type="button" style="position: relative" onclick="upvote();">This Playlist is Alright</button>
+  </body>
+</html>
+
